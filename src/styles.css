@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@import "@fontsource/fraunces/latin-500.css";
+@import "@fontsource/fraunces/latin-600.css";
+@import "@fontsource/outfit/latin-400.css";
+@import "@fontsource/outfit/latin-500.css";
+@import "@fontsource/outfit/latin-600.css";
+
+@theme {
+  --color-ink: #12110f;
+  --color-ink-soft: #2c2822;
+  --color-paper: #f3efe6;
+  --color-paper-2: #e7e0d2;
+  --color-cream: #faf7f1;
+  --color-gold: #8c7340;
+  --color-gold-2: #c4a36a;
+  --color-muted: #5c564c;
+  --color-line: #d8d0c2;
+  --color-inverse: #f7f4ee;
+  --color-g-blue: #4285f4;
+  --color-g-red: #ea4335;
+  --color-g-yellow: #fbbc05;
+  --color-g-green: #34a853;
+  --color-g-ink: #3c4043;
+  --color-g-paper: #ffffff;
+  --color-g-empty: #dadce0;
+  --color-v-red: #cc4744;
+  --color-v-link: #248dd5;
+  --color-v-star: #f6d645;
+  --color-v-ink: #333333;
+  --color-fb: #0866ff;
+  --color-ig-1: #fccc63;
+  --color-ig-2: #f77737;
+  --color-ig-3: #e1306c;
+  --color-ig-4: #833ab4;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --radius-sm: 2px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-inverse);
+  }
+}
+
+@keyframes status-flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.status-flash {
+  animation: status-flash 1.3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.ig-word {
+  background-image: linear-gradient(45deg, var(--color-ig-1), var(--color-ig-2), var(--color-ig-3), var(--color-ig-4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "The League Haircuts | Woman-Owned Barbershop in Exton, PA",
+      "hasCanvas": false,
+      "bodyTextLen": 4036,
+      "bodyTextHash": "e8b83d3b864fe5c7f007fa0d0b132e8e7836024bf0061a645566fd672d256da9",
+      "bodyTextPrefix": "Skip to content SERVICES TEAM GALLERY REVIEWS ABOUT GIFT CARDS C",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "The League Haircuts | Woman-Owned Barbershop in Exton, PA",
+      "hasCanvas": false,
+      "bodyTextLen": 3985,
+      "bodyTextHash": "393e9e63eec6885e07a4a91c14e6a654ef9def5f4b217c1dcb59671712c83818",
+      "bodyTextPrefix": "Skip to content Open menu WOMAN-OWNED · EXTON, PENNSYLVANIA The ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

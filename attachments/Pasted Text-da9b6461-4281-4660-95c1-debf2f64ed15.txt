@@ -1,0 +1,56 @@
+Priority
+Area
+Finding
+What I recommend
+🔴 HIGH
+Privacy Policy
+I could not find a publicly indexed Privacy Policy
+Add one and link it permanently in the footer
+🔴 HIGH
+Cookie consent
+I could not verify a cookie consent/privacy-control system
+Activate Wix/Usercentrics cookie consent with Accept, Reject/Essential Only, and preferences
+🔴 HIGH
+Terms
+I could not find Terms of Use
+Add Terms of Use and link them from the footer
+🔴 HIGH
+Data requests
+No visible process for requesting access/deletion of personal information
+Add a privacy/data-request method
+🔴 HIGH
+Third-party tracking
+Wix and external services can set cookies; Vagaro is also linked
+Audit analytics, Meta Pixel, Google tools, embedded maps, Vagaro and any other scripts
+🟠 MEDIUM
+Accessibility
+I cannot verify that Wix's Accessibility Wizard has been completed
+Run the full Wix WCAG 2.2 Accessibility Wizard plus its manual checks
+🟠 MEDIUM
+Footer
+Footer is very thin
+Add business name, address, phone, email, hours, Privacy, Terms, Accessibility, Cookie Preferences and social links
+🟠 MEDIUM
+Business hours
+Hours aren't visible on the pages I audited
+Put normal business hours prominently on Home and footer
+🟠 MEDIUM
+Local SEO
+Address and phone exist, but the local-business information is sparse
+Add hours, email, map/directions and consistent business information
+🟠 MEDIUM
+Structured data
+I couldn't independently confirm complete BarberShop/LocalBusiness schema
+Audit JSON-LD and add valid BarberShop/LocalBusiness markup if missing
+🟠 MEDIUM
+Search metadata
+Pages are crawlable, but metadata should be audited individually
+Review every page's title, meta description, canonical URL and social-share metadata
+🟠 MEDIUM
+Sitemap
+I couldn't independently retrieve /sitemap.xml through my inspection environment
+Confirm Wix sitemap exists and submit it to Google Search Console and Bing Webmaster Tools
+🟠 MEDIUM
+Robots.txt
+Same issue: I couldn't independently inspect the live robots file
+Confirm it doesn't block important pages or AI/search crawlers you want
