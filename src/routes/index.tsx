@@ -1,12 +1,13 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { BookLink, JsonLd, SiteShell } from "@/components/site/shell";
-import { BrandStars, FacebookGlyph, FacebookWord, GoogleGlyph, GoogleWord, InstagramGlyph, InstagramWord, MapsButton, SourceLine, VagaroWord } from "@/components/site/brands";
+import { BrandStars, FacebookGlyph, FacebookWord, GoogleGlyph, GoogleWord, InstagramGlyph, InstagramWord, MapsButton, SourceLine, VagaroLogo, VagaroWord } from "@/components/site/brands";
 import {
   addressLine,
   facts,
   gallery,
   googleReviews,
   hours,
+  reviews,
   services,
   site,
   team,
@@ -94,22 +95,32 @@ function Home() {
       </section>
 
       <section className="border-y border-line bg-ink text-inverse" aria-label="Shop facts">
-        <dl className="mx-auto grid max-w-6xl grid-cols-2 lg:grid-cols-4">
-          <div className="bg-g-paper px-5 py-6 text-g-ink lg:border-r lg:border-line">
+        <dl className="mx-auto grid max-w-6xl grid-cols-2 lg:grid-cols-6">
+          <div className="border-r border-line bg-g-paper px-4 py-4 text-g-ink">
             <dt className="flex items-center gap-2">
               <GoogleGlyph />
               <GoogleWord />
             </dt>
-            <dd className="mt-2 flex items-center gap-2">
+            <dd className="mt-1 flex items-center gap-2">
               <span className="font-display text-3xl text-g-ink">{site.googleRating}</span>
               <BrandStars rating={Number(site.googleRating)} tone="google" />
             </dd>
             <dd className="text-sm text-g-ink">{site.googleReviewCount} reviews</dd>
           </div>
+          <div className="bg-g-paper px-4 py-4 text-v-ink lg:border-r lg:border-line">
+            <dt>
+              <VagaroWord />
+            </dt>
+            <dd className="mt-1 flex items-center gap-2">
+              <span className="font-display text-3xl text-v-ink">{site.vagaroRating}</span>
+              <BrandStars rating={Number(site.vagaroRating)} tone="vagaro" />
+            </dd>
+            <dd className="text-sm text-v-ink">{site.vagaroReviewCount} reviews</dd>
+          </div>
           {facts.map((fact) => (
-            <div key={fact.label} className="border-t border-line px-5 py-6 odd:border-r lg:border-t-0 lg:border-r lg:last:border-r-0">
+            <div key={fact.label} className="border-t border-line px-4 py-3 odd:border-r lg:border-t-0 lg:border-r lg:py-4 lg:last:border-r-0">
               <dt className="text-xs tracking-widest text-gold-2 uppercase">{fact.label}</dt>
-              <dd className="mt-2 text-lg">{fact.value}</dd>
+              <dd className="mt-1 text-base">{fact.value}</dd>
             </div>
           ))}
         </dl>
@@ -220,7 +231,13 @@ function Home() {
         <ul className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((person) => (
             <li key={person.name}>
-              <img src={person.photo} alt={person.alt} className="aspect-[4/5] w-full object-cover" width={720} height={900} />
+              <img
+                src={person.photo}
+                alt={person.alt}
+                className="block aspect-[4/5] w-full bg-paper-2 object-cover"
+                width={720}
+                height={900}
+              />
               <h3 className="mt-3 font-display text-2xl">{person.name}</h3>
               <p className="text-sm text-muted">
                 {person.role} · {person.years}
@@ -233,6 +250,7 @@ function Home() {
                   ""
                 )}
               </p>
+              <p className="mt-2 text-sm whitespace-pre-line text-ink-soft">{person.bio}</p>
             </li>
           ))}
         </ul>
@@ -242,15 +260,15 @@ function Home() {
         <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
           <p className="text-xs tracking-widest text-gold uppercase">From the floor</p>
           <h2 className="mt-2 font-display text-4xl">The work</h2>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
             {gallery.map((shot) => (
-              <li key={shot.src} className={shot.wide ? "sm:col-span-2" : ""}>
+              <li key={shot.src} className="w-64 shrink-0 snap-start sm:w-72">
                 <img
                   src={shot.src}
                   alt={shot.alt}
-                  className={shot.wide ? "aspect-video w-full object-cover" : "aspect-4/5 w-full object-cover"}
-                  width={800}
-                  height={1000}
+                  className="aspect-4/5 w-full object-cover"
+                  width={720}
+                  height={900}
                   loading="lazy"
                 />
                 <p className="mt-2 text-sm text-muted">{shot.caption}</p>
@@ -317,9 +335,38 @@ function Home() {
             </li>
           ))}
         </ul>
-        <Link to="/reviews" className="mt-8 inline-block text-sm underline decoration-gold underline-offset-4">
-          All featured reviews
+        <Link to="/google-reviews" className="mt-8 inline-block text-sm underline decoration-gold underline-offset-4">
+          All Google reviews
         </Link>
+      </section>
+
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <VagaroLogo className="h-7 w-auto" />
+              <h2 className="mt-2 flex flex-wrap items-center gap-3 font-display text-4xl text-v-ink">
+                {site.vagaroRating}
+                <BrandStars rating={Number(site.vagaroRating)} tone="vagaro" />
+                <span className="text-lg font-sans font-normal text-v-ink">from {site.vagaroReviewCount} reviews</span>
+              </h2>
+            </div>
+            <a className="text-sm text-v-link underline underline-offset-4" href={site.vagaroUrl} target="_blank" rel="noopener noreferrer">
+              Read more on Vagaro
+            </a>
+          </div>
+          <ul className="mt-10 grid gap-6 lg:grid-cols-2">
+            {reviews.slice(0, 4).map((review) => (
+              <li key={`${review.name}-${review.date}`} className="bg-g-paper p-6 text-v-ink">
+                <blockquote className="text-xl leading-snug">“{review.quote}”</blockquote>
+                <SourceLine source="vagaro" name={review.name} date={review.date} staff={review.staff} />
+              </li>
+            ))}
+          </ul>
+          <a className="mt-8 inline-block text-sm text-v-link underline underline-offset-4" href={site.vagaroUrl} target="_blank" rel="noopener noreferrer">
+            Read more on Vagaro
+          </a>
+        </div>
       </section>
 
       <section className="grid border-t border-line lg:grid-cols-2">

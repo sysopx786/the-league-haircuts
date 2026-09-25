@@ -2,7 +2,28 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { addressLine, directionsUrl, hours, nav, shopStatus, site } from "@/lib/site";
-import { MapsButton } from "@/components/site/brands";
+import { GoogleGlyph, GoogleWord, MapsButton, VagaroLogo } from "@/components/site/brands";
+
+function NavLabel({ to, label }: { to: string; label: string }) {
+  if (to === "/google-reviews") {
+    return (
+      <span className="inline-flex items-center gap-1.5 normal-case tracking-normal">
+        <GoogleGlyph className="size-4" />
+        <GoogleWord className="text-sm" />
+        <span className="text-sm text-inverse/80">reviews</span>
+      </span>
+    );
+  }
+  if (to === "/vagaro-reviews") {
+    return (
+      <span className="inline-flex items-center normal-case tracking-normal">
+        <VagaroLogo className="h-4 w-auto" />
+        <span className="ml-1.5 text-sm text-v-red">reviews</span>
+      </span>
+    );
+  }
+  return label;
+}
 
 export function BookLink({
   children,
@@ -67,28 +88,30 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink bg-ink text-inverse">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-5">
-        <div className="flex min-w-0 items-center gap-3">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 py-2 sm:gap-3 sm:px-5 sm:py-3">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
           <Link to="/" className="shrink-0" aria-label="The League Haircuts, home">
             <img
               src="/media/logo-lockup.png"
               alt="The League Haircuts"
-              className="h-10 w-auto bg-cream object-contain px-1.5 sm:h-12"
-              width={280}
-              height={72}
+              className="h-16 w-auto max-w-[34vw] bg-cream object-contain object-left sm:h-20 sm:max-w-none"
+              width={659}
+              height={223}
             />
           </Link>
           <Link
             to="/contact"
             className={
               status.open
-                ? "inline-flex shrink-0 flex-col justify-center bg-gold px-3 py-1 leading-none text-ink"
-                : "inline-flex shrink-0 flex-col justify-center bg-paper-2 px-3 py-1 leading-none text-ink"
+                ? "inline-flex h-7 shrink-0 items-center gap-1.5 bg-gold px-2 text-ink sm:h-8 sm:gap-2 sm:px-3"
+                : "inline-flex h-7 shrink-0 items-center gap-1.5 bg-paper-2 px-2 text-ink sm:h-8 sm:gap-2 sm:px-3"
             }
             aria-label={`${status.sign}. ${status.detail}. View hours.`}
           >
-            <span className="status-flash font-display text-xl tracking-wide sm:text-2xl">{status.sign}</span>
-            <span className="mt-1 text-xs font-medium sm:text-sm">{status.detail}</span>
+            <span className={status.open ? "status-dot status-dot-open" : "status-dot status-dot-closed"} aria-hidden="true" />
+            <span className="text-[10px] leading-none font-medium whitespace-nowrap sm:text-xs">
+              {status.sign} · {status.detail}
+            </span>
           </Link>
         </div>
         <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary">
@@ -100,7 +123,7 @@ function Header() {
                 to={item.to}
                 className="text-sm tracking-widest text-inverse/80 uppercase hover:text-inverse data-[status=active]:text-gold-2"
               >
-                {item.label}
+                <NavLabel to={item.to} label={item.label} />
               </Link>
             ))}
         </nav>
@@ -129,7 +152,7 @@ function Header() {
                   to={item.to}
                   className="block border-b border-inverse/10 py-3 text-lg text-inverse"
                 >
-                  {item.label}
+                  <NavLabel to={item.to} label={item.label} />
                 </Link>
               </li>
             ))}

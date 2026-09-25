@@ -15,12 +15,14 @@ import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as GiftCardsRouteImport } from './routes/gift-cards'
+import { Route as GoogleReviewsRouteImport } from './routes/google-reviews'
 import { Route as NowHiringRouteImport } from './routes/now-hiring'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as VagaroReviewsRouteImport } from './routes/vagaro-reviews'
 import { Route as VideosRouteImport } from './routes/videos'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +55,11 @@ const GiftCardsRoute = GiftCardsRouteImport.update({
   path: '/gift-cards',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoogleReviewsRoute = GoogleReviewsRouteImport.update({
+  id: '/google-reviews',
+  path: '/google-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NowHiringRoute = NowHiringRouteImport.update({
   id: '/now-hiring',
   path: '/now-hiring',
@@ -83,6 +90,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VagaroReviewsRoute = VagaroReviewsRouteImport.update({
+  id: '/vagaro-reviews',
+  path: '/vagaro-reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VideosRoute = VideosRouteImport.update({
   id: '/videos',
   path: '/videos',
@@ -96,12 +108,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/gift-cards': typeof GiftCardsRoute
+  '/google-reviews': typeof GoogleReviewsRoute
   '/now-hiring': typeof NowHiringRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
+  '/vagaro-reviews': typeof VagaroReviewsRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRoutesByTo {
@@ -111,12 +125,14 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/gift-cards': typeof GiftCardsRoute
+  '/google-reviews': typeof GoogleReviewsRoute
   '/now-hiring': typeof NowHiringRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
+  '/vagaro-reviews': typeof VagaroReviewsRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRoutesById {
@@ -127,12 +143,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/gift-cards': typeof GiftCardsRoute
+  '/google-reviews': typeof GoogleReviewsRoute
   '/now-hiring': typeof NowHiringRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRoute
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
+  '/vagaro-reviews': typeof VagaroReviewsRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRouteTypes {
@@ -144,12 +162,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/gift-cards'
+    | '/google-reviews'
     | '/now-hiring'
     | '/privacy'
     | '/reviews'
     | '/services'
     | '/team'
     | '/terms'
+    | '/vagaro-reviews'
     | '/videos'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -159,12 +179,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/gift-cards'
+    | '/google-reviews'
     | '/now-hiring'
     | '/privacy'
     | '/reviews'
     | '/services'
     | '/team'
     | '/terms'
+    | '/vagaro-reviews'
     | '/videos'
   id:
     | '__root__'
@@ -174,12 +196,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/gift-cards'
+    | '/google-reviews'
     | '/now-hiring'
     | '/privacy'
     | '/reviews'
     | '/services'
     | '/team'
     | '/terms'
+    | '/vagaro-reviews'
     | '/videos'
   fileRoutesById: FileRoutesById
 }
@@ -190,12 +214,14 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   GiftCardsRoute: typeof GiftCardsRoute
+  GoogleReviewsRoute: typeof GoogleReviewsRoute
   NowHiringRoute: typeof NowHiringRoute
   PrivacyRoute: typeof PrivacyRoute
   ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRoute
   TeamRoute: typeof TeamRoute
   TermsRoute: typeof TermsRoute
+  VagaroReviewsRoute: typeof VagaroReviewsRoute
   VideosRoute: typeof VideosRoute
 }
 
@@ -243,6 +269,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GiftCardsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/google-reviews': {
+      id: '/google-reviews'
+      path: '/google-reviews'
+      fullPath: '/google-reviews'
+      preLoaderRoute: typeof GoogleReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/now-hiring': {
       id: '/now-hiring'
       path: '/now-hiring'
@@ -285,6 +318,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vagaro-reviews': {
+      id: '/vagaro-reviews'
+      path: '/vagaro-reviews'
+      fullPath: '/vagaro-reviews'
+      preLoaderRoute: typeof VagaroReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/videos': {
       id: '/videos'
       path: '/videos'
@@ -302,12 +342,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   GiftCardsRoute: GiftCardsRoute,
+  GoogleReviewsRoute: GoogleReviewsRoute,
   NowHiringRoute: NowHiringRoute,
   PrivacyRoute: PrivacyRoute,
   ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRoute,
   TeamRoute: TeamRoute,
   TermsRoute: TermsRoute,
+  VagaroReviewsRoute: VagaroReviewsRoute,
   VideosRoute: VideosRoute,
 }
 export const routeTree = rootRouteImport

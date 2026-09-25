@@ -24,7 +24,7 @@ function TeamPage() {
       <PageIntro
         kicker="Exton"
         title="The team"
-        lede="Biographies are from the shop’s own site. Star ratings, where shown, are the counts published on Vagaro."
+        lede="Descriptions are copied from the Vagaro staff page. Amber has no description published there, so hers is the shop biography already on file. Star ratings are the counts published on Vagaro."
       />
       <ul className="mx-auto max-w-6xl px-5 py-12">
         {team.map((person, index) => (
@@ -67,7 +67,7 @@ function TeamPage() {
                 )}
               </p>
               <p className="mt-4 text-sm text-ink-soft">{person.focus}</p>
-              <p className="mt-4 max-w-2xl">{person.bio}</p>
+              <p className="mt-4 max-w-2xl whitespace-pre-line">{person.bio}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <BookLink className="bg-ink px-4 py-3 text-sm text-inverse">Book with {person.name}</BookLink>
                 {person.instagram ? (
@@ -87,7 +87,11 @@ function TeamPage() {
         ))}
       </ul>
       <p className="mx-auto max-w-6xl px-5 pb-16 text-sm text-muted">
-        Booking opens the shop’s Vagaro calendar. A direct link to each stylist’s personal book was not published, so every button uses the same booking page:{" "}
+        Staff descriptions:{" "}
+        <a className="text-v-link underline" href={site.staffUrl} target="_blank" rel="noopener noreferrer">
+          vagaro.com/theleaguehaircuts/staff
+        </a>
+        . Booking opens the shop’s Vagaro calendar. A direct link to each stylist’s personal book was not published, so every button uses the same booking page:{" "}
         <a className="underline" href={site.bookUrl} target="_blank" rel="noopener noreferrer">
           vagaro.com/theleaguehaircuts
         </a>

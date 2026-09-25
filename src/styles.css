@@ -63,18 +63,34 @@
   }
 }
 
-@keyframes status-flash {
-  0%,
-  100% {
-    opacity: 1;
+@keyframes status-dot {
+  0% {
+    box-shadow: 0 0 0 0 var(--dot);
   }
-  50% {
-    opacity: 0.35;
+  70% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
   }
 }
 
-.status-flash {
-  animation: status-flash 1.3s ease-in-out infinite;
+.status-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  animation: status-dot 1.4s ease-out infinite;
+}
+
+.status-dot-open {
+  --dot: #1e8e3e;
+  background: #1e8e3e;
+}
+
+.status-dot-closed {
+  --dot: #c5221f;
+  background: #c5221f;
 }
 
 @media (prefers-reduced-motion: reduce) {
