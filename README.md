@@ -13,15 +13,11 @@ Anyone can open these.
 - HTTPS: `https://github.com/sysopx786/the-league-haircuts.git`
 - SSH: `git@github.com:sysopx786/the-league-haircuts.git`
 
-## Public links
+## Public link
 
-Anyone can open these.
+https://sysopx786.github.io/the-league-haircuts
 
-### Site we built
-
-- https://sysopx786.github.io/the-league-haircuts/
-
-### Website
+## Other public links
 
 - Home: https://www.theleaguehaircuts.com/
 - Services: https://www.theleaguehaircuts.com/services
