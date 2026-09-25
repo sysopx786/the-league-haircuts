@@ -142,10 +142,29 @@ function authPopupPlugin(): Plugin {
   };
 }
 
+const pagesBase = process.env.GITHUB_PAGES === "1" ? "/the-league-haircuts/" : "/";
+
+/** Rewrite root-absolute media paths only for the GitHub Pages subpath build. */
+function pagesAssetPlugin(): Plugin {
+  return {
+    name: "app-builder:pages-asset-base",
+    apply: "build",
+    transform(code, id) {
+      if (pagesBase === "/" || !id.includes("/src/")) return;
+      if (!code.includes('"/')) return;
+      return code
+        .replaceAll('"/media/', `"${pagesBase}media/`)
+        .replaceAll('"/favicon', `"${pagesBase}favicon`)
+        .replaceAll('"/__grok/', `"${pagesBase}__grok/`);
+    },
+  };
+}
+
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
 export default defineConfig(({ command, isPreview }) => ({
+  base: pagesBase,
   server: {
     host: "0.0.0.0",
     port: 8080,
@@ -165,18 +184,48 @@ export default defineConfig(({ command, isPreview }) => ({
     appEnvPlugin(),
     // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
     grokPwaPlugin(),
+    pagesAssetPlugin(),
     tailwindcss(),
-    tanstackStart(),
+    tanstackStart(
+      pagesBase === "/"
+        ? undefined
+        : {
+            prerender: {
+              enabled: true,
+              crawlLinks: true,
+              autoSubfolderIndex: true,
+            },
+            pages: [
+              { path: "/" },
+              { path: "/services" },
+              { path: "/team" },
+              { path: "/gallery" },
+              { path: "/videos" },
+              { path: "/google-reviews" },
+              { path: "/vagaro-reviews" },
+              { path: "/reviews" },
+              { path: "/about" },
+              { path: "/gift-cards" },
+              { path: "/contact" },
+              { path: "/now-hiring" },
+              { path: "/privacy" },
+              { path: "/terms" },
+              { path: "/accessibility" },
+            ],
+          },
+    ),
     ...(command === "build" || isPreview
-      ? [
-          nitro({
-            preset: "vercel",
-            // Auto-registers server/middleware/* (the PWA install page +
-            // manifest + head-tag middleware). Nitro v3 defaults serverDir to
-            // false, so removing this silently unwires /?install=1 on deploys.
-            serverDir: "./server",
-          }),
-        ]
+      ? pagesBase === "/"
+        ? [
+            nitro({
+              preset: "vercel",
+              // Auto-registers server/middleware/* (the PWA install page +
+              // manifest + head-tag middleware). Nitro v3 defaults serverDir to
+              // false, so removing this silently unwires /?install=1 on deploys.
+              serverDir: "./server",
+            }),
+          ]
+        : []
       : []),
     viteReact(),
   ],
