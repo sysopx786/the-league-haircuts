@@ -2,27 +2,16 @@
 
 Website for The League Haircuts, Exton, PA.
 
-Both GitHub repositories are private. There is no public GitHub or GitHub Pages address.
+The GitHub repository is private. There is no public GitHub or GitHub Pages address.
 
 ## Private links
 
 These only work for people with access.
 
-### the-league-haircuts
-
 - Web: https://github.com/sysopx786/the-league-haircuts
 - Code: https://github.com/sysopx786/the-league-haircuts/tree/main
 - HTTPS: `https://github.com/sysopx786/the-league-haircuts.git`
 - SSH: `git@github.com:sysopx786/the-league-haircuts.git`
-
-### the-league-haircut
-
-This is the private repository that holds the site source.
-
-- Web: https://github.com/sysopx786/the-league-haircut
-- Code: https://github.com/sysopx786/the-league-haircut/tree/main
-- HTTPS: `https://github.com/sysopx786/the-league-haircut.git`
-- SSH: `git@github.com:sysopx786/the-league-haircut.git`
 
 ## Public links
 
