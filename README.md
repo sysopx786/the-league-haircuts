@@ -2,11 +2,11 @@
 
 Website for The League Haircuts, Exton, PA.
 
-The GitHub repository is private. There is no public GitHub or GitHub Pages address.
+The GitHub repository is public.
 
-## Private links
+## Repository
 
-These only work for people with access.
+Anyone can open these.
 
 - Web: https://github.com/sysopx786/the-league-haircuts
 - Code: https://github.com/sysopx786/the-league-haircuts/tree/main
